@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStruct", "DataStruct\DataStruct.vcxproj", "{2F06A038-410B-4907-BC92-88574B881CEE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StdTest", "..\StdTest\StdTest.vcxproj", "{2B4CEDEC-7960-4D32-8DA8-982F8EE6515C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F06A038-410B-4907-BC92-88574B881CEE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F06A038-410B-4907-BC92-88574B881CEE}.Debug|Win32.Build.0 = Debug|Win32
+		{2F06A038-410B-4907-BC92-88574B881CEE}.Release|Win32.ActiveCfg = Release|Win32
+		{2F06A038-410B-4907-BC92-88574B881CEE}.Release|Win32.Build.0 = Release|Win32
+		{2B4CEDEC-7960-4D32-8DA8-982F8EE6515C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2B4CEDEC-7960-4D32-8DA8-982F8EE6515C}.Debug|Win32.Build.0 = Debug|Win32
+		{2B4CEDEC-7960-4D32-8DA8-982F8EE6515C}.Release|Win32.ActiveCfg = Release|Win32
+		{2B4CEDEC-7960-4D32-8DA8-982F8EE6515C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
