@@ -9,7 +9,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	for (int i = 0 ;i < 5 ;i++)
 	{
-		iElist.insert_front(new int(i));
+		iElist.insert_front(i);
 	}
 
 	printf("ilist length:%d\n",iElist.length());

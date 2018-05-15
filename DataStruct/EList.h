@@ -17,14 +17,14 @@ public:
 private:
 	Node* head;
 	Len len;
-	Node find_pre(Node* n);
+	Node& find_pre(const Node& n);
 
 public:
 	EList();
 	~EList();
-	void insert_front(Elm* e);
-	void remove_node(Node* n);
-	Elm& find_index(Index index);
+	void insert_front(const Elm& e);
+	void remove_node(Node& n);
+	Elm& find_index(const Index& index);
 	Len length();
 };
 
@@ -32,14 +32,14 @@ template <typename T>
 EList<T>::EList():head(new Node()),len(0)
 {
 	head->next = nullptr;
-	head->elm = nullptr;
+	//head->elm = nullptr;
 }
 
 template <typename T>
 EList<T>::~EList()
 {
 	if(head != nullptr) 
-		for (int i = 0;i < length();i++)
+		for (Len i = 0;i < length();i++)
 		{
 			Node* n = head;
 			head = head->next;
@@ -49,7 +49,7 @@ EList<T>::~EList()
 }
 
 template <typename T>
-typename EList<T>::Elm& EList<T>::find_index(Index index)
+typename EList<T>::Elm& EList<T>::find_index(const Index& index)
 {
 	if (head == nullptr)
 	{
@@ -67,17 +67,17 @@ typename EList<T>::Elm& EList<T>::find_index(Index index)
 	{
 		result = result->next;
 	}
-	return *(result->elm);
+	return result->elm;
 }
 
 template <typename T>
 typename EList<T>::Len EList<T>::length()
 {
-	return len-1;
+	return len;
 }
 
 template <typename T>
-void EList<T>::insert_front(Elm* e)
+void EList<T>::insert_front(const Elm& e)
 {
 	if(head == nullptr) 
 	{
@@ -93,7 +93,7 @@ void EList<T>::insert_front(Elm* e)
 }
 
 template <typename T>
-typename EList<T>::Node EList<T>::find_pre(Node* n)
+typename EList<T>::Node& EList<T>::find_pre(const Node& n)
 {
 	if(head == nullptr) 
 	{
@@ -101,24 +101,24 @@ typename EList<T>::Node EList<T>::find_pre(Node* n)
 		exit(-1);
 	}
 	Node* ntmp = head;
-	while (n->next != nullptr && n->next != e)
+	while (ntmp->next != nullptr && ntmp->next != &n)
 	{
-		n = n->next;
+		ntmp = ntmp->next;
 	}
 	return n;
 }
 
 template <typename T>
-void EList<T>::remove_node(Node* n)
+void EList<T>::remove_node(Node& n)
 {
-	Node* curn = find_pre(n);
+	Node* pre_node = find_pre(n);
 
-	if (curn->next != nullptr)
+	if (pre_node->next != nullptr)
 	{
 		return;
 	}
-	curn->next = curn->next->next;
-	delete curn->next;
+	pre_node->next = pre_node->next->next;
+	delete pre_node->next;
 	len--;
 }
 
@@ -129,13 +129,14 @@ public:
 	typedef T Elm;
 public:
 	EListEntry* next;
-	Elm* elm;
+	Elm elm;
 	EListEntry();
 	~EListEntry();
+	EListEntry& operator=(EListEntry& r);
 };
 
 template <typename T> 
-EListEntry<T>::EListEntry():next(nullptr),elm(nullptr)
+EListEntry<T>::EListEntry():next(nullptr)
 {
 
 }
@@ -146,6 +147,16 @@ EListEntry<T>::~EListEntry()
 	//if(elm != nullptr) delete elm;
 }
 
+template <typename T> 
+EListEntry<T>& EListEntry<T>::operator=(EListEntry& r)
+{
+	if (this == &r)
+	{
+		return this;
+	}
+	this->elm = r.elm;
+	return this;
+}
 
 
 
